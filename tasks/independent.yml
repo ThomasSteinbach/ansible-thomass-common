@@ -1,0 +1,26 @@
+---
+- name: install tzdata
+  become: yes
+  package:
+    name: tzdata
+    state: present
+
+- name: set timezone
+  become: yes
+  timezone:
+    name: Europe/Berlin
+
+- name: install ansible dependent python libraries
+  become: yes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-httplib2
+    - python-lxml
+
+- name: allow use of ansible rsync module without password prompt
+  become: yes
+  copy:
+    content: "{{ ansible_env.SUDO_USER if ansible_env.SUDO_USER is defined else ansible_user_id }} ALL = NOPASSWD{{':'}} /usr/bin/rsync\n"
+    dest: /etc/sudoers.d/ansible-rsync

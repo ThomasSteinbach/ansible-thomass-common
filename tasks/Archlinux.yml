@@ -1,0 +1,5 @@
+- name: update package information
+  become: yes
+  pacman:
+    update_cache: yes
+  changed_when: false

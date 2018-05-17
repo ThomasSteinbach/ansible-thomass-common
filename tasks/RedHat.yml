@@ -1,0 +1,4 @@
+- name: update package information
+  become: yes
+  command: yum makecache
+  changed_when: false

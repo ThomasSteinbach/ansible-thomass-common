@@ -1,0 +1,4 @@
+galaxy_info:
+  author: Thomas Steinbach
+  description: Does common tasks useful for many ansible roles
+  license: MIT

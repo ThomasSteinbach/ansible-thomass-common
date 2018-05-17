@@ -1,0 +1,5 @@
+- name: update package information
+  become: yes
+  apt:
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time }}"

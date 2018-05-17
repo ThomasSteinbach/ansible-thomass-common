@@ -1,0 +1,5 @@
+- name: run distro dependent tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: run distro independent tasks
+  include_tasks: independent.yml
